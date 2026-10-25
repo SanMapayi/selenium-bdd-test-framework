@@ -1,0 +1,17 @@
+name: BDD binding and configuration checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '23'
+          cache: maven
+      - name: Check configuration and feature bindings without a browser
+        run: mvn -B test "-Dcucumber.execution.dry-run=true"

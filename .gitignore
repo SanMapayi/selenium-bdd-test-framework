@@ -36,3 +36,10 @@ build/
 
 ### Mac OS ###
 .DS_Store
+# Generated test artifacts
+.idea/
+*.iml
+logfiles/
+screenshots/
+.env
+.env.*
